@@ -28,10 +28,10 @@ classifiers = [
 
 [project.urls]
 Homepage = "https://elasyn.com.au"
-Documentation = "https://github.com/elasyn/elementor2gads#readme"
-Source = "https://github.com/elasyn/elementor2gads"
-Issues = "https://github.com/elasyn/elementor2gads/issues"
-Changelog = "https://github.com/elasyn/elementor2gads/blob/main/CHANGELOG.md"
+Documentation = "https://github.com/sroham/elementor2gads#readme"
+Source = "https://github.com/sroham/elementor2gads"
+Issues = "https://github.com/sroham/elementor2gads/issues"
+Changelog = "https://github.com/sroham/elementor2gads/blob/main/CHANGELOG.md"
 
 [project.optional-dependencies]
 dev = [

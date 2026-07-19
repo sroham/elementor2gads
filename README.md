@@ -192,7 +192,7 @@ docker run --rm `
 
 Only process data you are authorised to use. Google requires Customer Match data to be collected in a first-party context, requires appropriate privacy disclosures and consent where applicable, and prohibits certain data and targeting uses. A manual upload requires an in-product compliance attestation.
 
-Google currently accepts manual Customer Match CSV files in ASCII or UTF-8 with exact English headers. For mailing-address matching, `First Name`, `Last Name`, `Country`, and `Zip` must all be present. Google accepts plaintext through its manual UI, but API uploads require normalised, SHA-256-hashed private identifiers. See [Google Customer Match requirements](https://github.com/elasyn/elementor2gads/blob/main/docs/google-customer-match.md) for the dated implementation notes and primary sources.
+Google currently accepts manual Customer Match CSV files in ASCII or UTF-8 with exact English headers. For mailing-address matching, `First Name`, `Last Name`, `Country`, and `Zip` must all be present. Google accepts plaintext through its manual UI, but API uploads require normalised, SHA-256-hashed private identifiers. See [Google Customer Match requirements](https://github.com/sroham/elementor2gads/blob/main/docs/google-customer-match.md) for the dated implementation notes and primary sources.
 
 ## Development
 
@@ -202,7 +202,7 @@ python -m ruff check .
 python -m pytest
 ```
 
-Contributions are welcome. Please read the [contributing guide](https://github.com/elasyn/elementor2gads/blob/main/CONTRIBUTING.md), [code of conduct](https://github.com/elasyn/elementor2gads/blob/main/CODE_OF_CONDUCT.md), and [security policy](https://github.com/elasyn/elementor2gads/blob/main/SECURITY.md) before opening an issue or change.
+Contributions are welcome. Please read the [contributing guide](https://github.com/sroham/elementor2gads/blob/main/CONTRIBUTING.md), [code of conduct](https://github.com/sroham/elementor2gads/blob/main/CODE_OF_CONDUCT.md), and [security policy](https://github.com/sroham/elementor2gads/blob/main/SECURITY.md) before opening an issue or change.
 
 ## Credits
 
@@ -210,7 +210,7 @@ Built by [Elasyn](https://elasyn.com.au) and released for the open-source commun
 
 ## Licence
 
-[MIT](https://github.com/elasyn/elementor2gads/blob/main/LICENSE)
+[MIT](https://github.com/sroham/elementor2gads/blob/main/LICENSE)
 
 ## Disclaimer
 
