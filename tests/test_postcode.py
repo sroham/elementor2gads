@@ -16,10 +16,13 @@ def lookup():
     return {
         "adelaide": {"SA": {"5000"}},
         "brisbane city": {"QLD": {"4000"}},
+        "denham court": {"NSW": {"2565"}},
         "exampleville": {"QLD": {"4999"}, "NSW": {"2999"}},
         "lane cove": {"NSW": {"2066"}},
         "north sydney": {"NSW": {"2060"}},
         "o'connor": {"ACT": {"2602"}},
+        "raymond terrace": {"NSW": {"2324"}},
+        "springfield": {"QLD": {"4300"}, "NSW": {"2250"}},
         "st lucia": {"QLD": {"4067"}},
         "victoria point": {"QLD": {"4165"}},
     }
@@ -32,7 +35,12 @@ def test_normalize_suburb_key() -> None:
 
 @pytest.mark.parametrize(
     ("text", "expected"),
-    [("Brisbane QLD", "QLD"), ("Sydney, New South Wales", "NSW"), ("unknown", None)],
+    [
+        ("Brisbane QLD", "QLD"),
+        ("Sydney, New South Wales", "NSW"),
+        ("Springfield Queensland Australia", "QLD"),
+        ("unknown", None),
+    ],
 )
 def test_extract_state(text: str, expected: str | None) -> None:
     assert extract_state_from_text(text) == expected
@@ -63,8 +71,11 @@ def test_street_name_is_not_mistaken_for_a_misspelled_locality(lookup) -> None:
     [
         ("Victoria Point QLD", "4165"),
         ("Lane Cove NSW", "2066"),
+        ("Raymond Terrace NSW", "2324"),
+        ("Denham Court NSW", "2565"),
         ("St Lucia QLD", "4067"),
         ("O’Connor ACT", "2602"),
+        ("Springfield Queensland Australia", "4300"),
     ],
 )
 def test_locality_words_are_not_treated_as_state_or_street_suffixes(

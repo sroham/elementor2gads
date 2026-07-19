@@ -22,6 +22,7 @@ STATE_FULL = {
     "victoria": "VIC",
     "western australia": "WA",
 }
+STATE_FULL_NAME_WORDS = {abbreviation: name.split() for name, abbreviation in STATE_FULL.items()}
 STREET_TYPES = {
     "av",
     "ave",
@@ -147,7 +148,11 @@ def extract_state_from_text(value: str) -> str | None:
     for full_name, abbreviation in STATE_FULL.items():
         for match in re.finditer(rf"(?<!\w){re.escape(full_name)}(?!\w)", text):
             tail = text[match.end() :]
-            if re.fullmatch(r"[\s,;()/.\-]*(?:\d{4})?[\s,;()/.\-]*", tail):
+            if re.fullmatch(
+                r"[\s,;()/.\-]*(?:\d{4}[\s,;()/.\-]*)?"
+                r"(?:(?:australia|au)[\s,;()/.\-]*)?",
+                tail,
+            ):
                 candidates.append((match.start(), abbreviation))
     return max(candidates, default=(0, None), key=lambda item: item[0])[1]
 
@@ -188,6 +193,22 @@ def _tokenize(value: str) -> list[str]:
     return re.findall(r"[\w][\w'\-]*", normalized, flags=re.UNICODE)
 
 
+def _without_location_suffix(words: list[str], state_hint: str | None) -> list[str]:
+    trimmed = list(words)
+    while trimmed and (
+        trimmed[-1] in {"au", "australia"} or (trimmed[-1].isdigit() and len(trimmed[-1]) == 4)
+    ):
+        trimmed.pop()
+    if not state_hint:
+        return trimmed
+
+    variants = ([state_hint.casefold()], STATE_FULL_NAME_WORDS[state_hint])
+    for variant in variants:
+        if len(trimmed) >= len(variant) and trimmed[-len(variant) :] == variant:
+            return trimmed[: -len(variant)]
+    return trimmed
+
+
 def infer_postcode_from_suburb(
     text: str,
     au_lookup: PostcodeLookup,
@@ -208,6 +229,11 @@ def infer_postcode_from_suburb(
     words = _tokenize(text)
     if not words:
         return None
+    whole_locality = " ".join(_without_location_suffix(words, state_hint))
+    if whole_locality in au_lookup:
+        postcode = _choose_postcode(au_lookup[whole_locality], state_hint)
+        if postcode:
+            return postcode
     max_words = max(len(key.split()) for key in au_lookup)
     last_street_index = max(
         (index for index, word in enumerate(words) if index > 0 and word in STREET_TYPES),
