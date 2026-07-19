@@ -1,0 +1,8 @@
+*
+!pyproject.toml
+!README.md
+!LICENSE
+!elementor2gads/
+!elementor2gads/**
+elementor2gads/__pycache__/
+elementor2gads/**/*.pyc

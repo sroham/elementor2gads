@@ -1,0 +1,75 @@
+[build-system]
+requires = ["setuptools>=77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "elementor2gads"
+dynamic = ["version"]
+description = "Convert Elementor form exports to Google Ads Customer Match CSV files, with Australian phone and postcode support."
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "Elasyn" }]
+license = "MIT"
+license-files = ["LICENSE"]
+keywords = ["australia", "csv", "customer-match", "elementor", "google-ads", "marketing"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Office/Business",
+  "Topic :: Utilities",
+]
+
+[project.urls]
+Homepage = "https://elasyn.com.au"
+Documentation = "https://github.com/elasyn/elementor2gads#readme"
+Source = "https://github.com/elasyn/elementor2gads"
+Issues = "https://github.com/elasyn/elementor2gads/issues"
+Changelog = "https://github.com/elasyn/elementor2gads/blob/main/CHANGELOG.md"
+
+[project.optional-dependencies]
+dev = [
+  "build>=1.2.2",
+  "pytest>=8.3",
+  "pytest-cov>=6.0",
+  "ruff>=0.11",
+  "twine>=6.0",
+]
+
+[project.scripts]
+elementor2gads = "elementor2gads.cli:main"
+elementor2gads-postcodes = "elementor2gads.postcode_data:main"
+
+[tool.setuptools.dynamic]
+version = { attr = "elementor2gads.__version__" }
+
+[tool.setuptools.packages.find]
+include = ["elementor2gads*"]
+
+[tool.pytest.ini_options]
+addopts = "--strict-config --strict-markers -ra"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["elementor2gads"]
+
+[tool.coverage.report]
+fail_under = 90
+show_missing = true
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["B", "C4", "E", "F", "I", "SIM", "UP"]
+
+[tool.ruff.format]
+line-ending = "lf"

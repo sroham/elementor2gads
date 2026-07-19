@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Private security report
+    url: https://elasyn.com.au
+    about: Contact Elasyn privately; never disclose a vulnerability or personal data in an issue.
+  - name: Professional enquiries
+    url: https://elasyn.com.au
+    about: Contact Elasyn about professional services or private implementation support.

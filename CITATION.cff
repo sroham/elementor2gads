@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+title: "elementor2gads"
+abstract: >-
+  A local Python command-line tool that converts Elementor form-submission CSV files into
+  Google Ads Customer Match contact files, with Australian phone and postcode support.
+type: software
+authors:
+  - name: "Elasyn"
+    website: "https://elasyn.com.au"
+version: "1.0.0"
+date-released: "2026-07-19"
+url: "https://github.com/elasyn/elementor2gads"
+repository-code: "https://github.com/elasyn/elementor2gads"
+license: MIT

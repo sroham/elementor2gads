@@ -1,0 +1,51 @@
+name: Feature request
+description: Propose an improvement and its privacy implications.
+title: "[Feature]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Feature requests are public. Use synthetic examples and do not include customer data,
+        credentials, confidential workflows, or third-party datasets without redistribution rights.
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched existing issues for this request.
+          required: true
+        - label: I confirm that this request contains synthetic data only.
+          required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Use case
+      description: What problem would this feature solve, and for whom?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behaviour
+      description: Describe the interface and expected result using synthetic examples.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Describe current workarounds or smaller approaches.
+  - type: textarea
+    id: privacy
+    attributes:
+      label: Privacy, security, and licensing impact
+      description: |
+        Does this change network access, data collection, hashing, retention, output fields,
+        third-party services, or bundled data? Identify any required licences or policy changes.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Include only information that is safe to publish permanently.

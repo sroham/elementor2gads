@@ -1,0 +1,77 @@
+name: Bug report
+description: Report a reproducible problem using synthetic data only.
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a problem. Never attach a real Elementor export, Customer Match
+        file, personal information, credentials, or confidential business data. Report suspected
+        vulnerabilities privately through the process in SECURITY.md.
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Data safety
+      options:
+        - label: I confirm that this report and all attachments contain synthetic data only.
+          required: true
+        - label: I searched existing issues and confirmed this is not a public security report.
+          required: true
+  - type: input
+    id: version
+    attributes:
+      label: elementor2gads version
+      placeholder: "1.0.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: operating-system
+    attributes:
+      label: Operating system
+      options:
+        - Windows
+        - macOS
+        - Linux
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: python
+    attributes:
+      label: Python version
+      placeholder: "3.12.4"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Problem
+      description: Explain what happened and why it appears incorrect.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Synthetic reproduction
+      description: Provide the command and smallest synthetic CSV that reproduces the problem.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behaviour and sanitised output
+      description: Remove customer values, credentials, confidential paths, and business names.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Include only information that is safe to publish permanently.
